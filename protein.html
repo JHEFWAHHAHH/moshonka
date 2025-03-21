@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>мошонка</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #click-image {
+            width: 200px;
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+        }
+        #click-image:active {
+            transform: scale(1.2);
+        }
+        #score {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        #upgrade {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img id="click-image" src="5373011870232999286.jpg" alt="тап">
+    <div id="score">Очки: <span id="counter">0</span></div>
+    <button id="upgrade">улучш</button>
+    
+    <script>
+        let score = 0;
+        let clickValue = 1;
+
+        document.getElementById("click-image").addEventListener("click", function() {
+            score += clickValue;
+            document.getElementById("counter").textContent = score;
+            this.style.transform = "scale(1.2)";
+            setTimeout(() => {
+                this.style.transform = "scale(1)";
+            }, 100);
+        });
+
+        document.getElementById("upgrade").addEventListener("click", function() {
+            if (score >= 10) {
+                score -= 10;
+                clickValue++;
+                document.getElementById("counter").textContent = score;
+                alert("потпісон");
+            } else {
+                alert("Нехвотає");
+            }
+        });
+    </script>
+</body>
+</html>
